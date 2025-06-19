@@ -29,11 +29,20 @@ If you want to reproduce my setup:
 
 3. **Clone the Repo**
    ``` bash
-   $ https://github.com/Joseph-Essa/Learning-Oracle-PLSQL.git
+     https://github.com/Joseph-Essa/Learning-Oracle-PLSQL.git
    ```
 
 ## 📁 Repository Structure
+```
+Learning-Oracle-PLSQL/
+├── docker/
+│   ├── .env.example
+│   ├── .gitignore
+│   └── docker-compose.yml
+├── src/
+    ├── SQL/
+│   ├── PLSQL/
+│   └── Test_Connection.sql
+├── README.md
 
-├── docker         # (Optional) Dockerfile for Oracle XE image 
-├── src            # SQL & PL/SQL scripts organized by topic
-├── README.md      # Project documentation
+```
