@@ -29,7 +29,7 @@ If you want to reproduce my setup:
 
 3. **Clone the Repo**
    ``` bash
-     https://github.com/Joseph-Essa/Learning-Oracle-PLSQL.git
+    https://github.com/Joseph-Essa/Learning-Oracle-PLSQL.git
    ```
 
 ## 📁 Repository Structure
