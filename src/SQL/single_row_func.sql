@@ -96,3 +96,57 @@ SELECT EMPLOYEE_ID , LAST_NAME , Gender,
                     ) as "decode Case Gender"
 from employees ;
 
+------------------ Date Functions ----------------
+select SYSDATE 
+from dual ;
+
+select TO_CHAR (sysdate , 'dd-mm-yyy')
+from dual;
+
+select  
+TO_CHAR (sysdate , 'd dd ddd w ww mon month yy yyyy Dy Day'), 
+TO_CHAR (sysdate , 'ddth ddsp ddspth "of" Month,Year')
+from dual;
+
+-- d -> day postion in week (start from sunday)
+-- dd -> day posstion in month 
+-- ddd -> day posstion in year  
+-- w -> weeK posstion in month 
+-- ww -> week postion in year 
+-- mon -> Abbreviation of the month name
+-- month -> full month name
+-- yy -> Abbreviation of the year (2 digits)
+-- yyyy -> year  
+-- Dy -> Abbreviation of day name 
+-- Day -> day name
+
+
+-- Timing 
+
+SELECT TO_CHAR (SYSDATE ,'hh24:mi:ss') ,
+        TO_CHAR (SYSDATE ,'hh12:mi:ss pm')
+from dual ;
+
+select employee_id , last_name , hire_date , 
+        to_char(hire_date ,'FM dd-month-yyyy')
+from employees ;
+
+-- FM -> to delete spaces 
+
+------------ EMP hired on 7-06-2002 ---------------
+
+select * from EMPLOYEES 
+where HIRE_DATE = TO_DATE('07-06-2002', 'dd-mm-yyyy') ;
+
+select TO_CHAR (TO_DATE('04-02-2003','dd-mm-yyyy'),'Day')
+from dual ; 
+
+select * from EMPLOYEES 
+where TO_CHAR (HIRE_DATE , 'yyyy') = '2002' ;
+
+select employee_id , last_name , hire_date , 
+        trunc(MONTHS_BETWEEN(SYSDATE, hire_date) /12) as "Years",
+        trunc( mod( MONTHS_BETWEEN(SYSDATE, hire_date) ,12)) as "Months",
+        EXTRACT(day FROM SYSDATE) - EXTRACT(DAY FROM hire_date) as "Days"
+
+from EMPLOYEES ;
