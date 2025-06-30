@@ -147,6 +147,35 @@ where TO_CHAR (HIRE_DATE , 'yyyy') = '2002' ;
 select employee_id , last_name , hire_date , 
         trunc(MONTHS_BETWEEN(SYSDATE, hire_date) /12) as "Years",
         trunc( mod( MONTHS_BETWEEN(SYSDATE, hire_date) ,12)) as "Months",
-        EXTRACT(day FROM SYSDATE) - EXTRACT(DAY FROM hire_date) as "Days"
+        EXTRACT(day FROM (SYSDATE - EXTRACT(DAY FROM hire_date))) as "Days"
 
 from EMPLOYEES ;
+
+
+SELECT sysdate +3 as "Days"  ,ADD_MONTHS(SYSDATE , 3) as "monthes"
+FROM dual ; 
+
+SELECT last_day(SYSDATE)
+FROM dual ;
+
+select next_day (SYSDATE , 'SUN')
+from dual ;
+
+---------- Round and Trunc with dates -------------
+SELECT round (SYSDATE ,'MONTH') ,Round(sysdate , 'YEAR') , 
+        trunc (SYSDATE ,'MONTH') ,trunc(sysdate , 'YEAR')
+from dual ; 
+
+-------------------- conversion functions -----------------
+select employee_id , last_name , salary ,
+        trim (TO_CHAR (trunc(salary),'999,999.99L')) as "Money"
+from EMPLOYEES ; 
+
+select TO_NUMBER('14,500.00','99,999.99') + 500
+FROM dual ;
+
+-------------------- general functions ----------------------
+
+SELECT employee_id , LAST_NAME ,salary, commission_pct ,
+        salary + NVL(commission_pct,0)
+FROM EMPLOYEES ;
